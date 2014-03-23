@@ -531,14 +531,16 @@ var viewModule = (function () {
             src         = content.src || '',
             pdps        = config.sinaads_ad_pdps,
             tpl         = config.sinaads_ad_tpl || '',
-            adContent;
+            adContent,
+            containerWidth,
+            containerHeight;
 
         //移动端 尺寸按照实际容器尺寸获取
         element.style.display = 'block';
-        var containerWidth = element.offsetWidth;
+        containerWidth = element.offsetWidth;
         height = containerWidth / width * height;
         width = containerWidth;
-        var containerHeight = element.offsetHeight;
+        containerHeight = element.offsetHeight;
         if (containerHeight !== 0) {
             width = width * containerHeight / height ;
             height = containerHeight < height ? containerHeight : height;
@@ -583,9 +585,6 @@ var viewModule = (function () {
                     break;
             }
         }
-        try {
-            window.sinaadsROC.done(pdps);
-        } catch (e) {}
     });
 })(core, viewModule);
 (function (core, view) {
